@@ -1,0 +1,3 @@
+-- The goal today:
+-- 1. Always be able to tell if a function os polymorphic or overloaded.
+-- 2. Do the exercises.
