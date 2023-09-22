@@ -1,0 +1,33 @@
+1. The "map" function in Haskell.
+map is a curryied function. It takes a function and a list as
+parameters, and what it does, is apply the function on each
+element of the list.
+
+> map (\x -> x + x) [2,3,4,5]
+> [4,6,8,10]
+
+> map (+1) [2,13,34,9]
+> [3,14,35,10]
+
+odds n = map f [0..n-1]
+    where
+        f x = x*2 + 1
+
+2. The "null" function in Haskell.
+null :: [a] -> Bool 
+Can be used to test if a list is empty.
+
+> null []
+> True
+
+> null [2,3,4,5]
+> False
+
+3. The "zip" function in Haskell
+zip :: [a] -> [b] -> [(a,b)]
+
+The zip function maps two lists to a list of pairs of their corresponding elements.
+For example:
+
+> zip ['a','b','c'] [1,2,3]
+> [('a',1),('b',2),('c',3)]
