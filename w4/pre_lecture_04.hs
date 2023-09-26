@@ -229,5 +229,28 @@ that maps an integer n to all such triples with components in [1..n]. For exampl
 > [(3,4,5),(4,3,5)]
 -}
 
-pyths :: Int -> [(Int, Int, Int)]
-pyths x = [i | (x - 1, x, x + 1)]
+{-
+1. Define, using pattern matching and without using the length function, a function onlytwo that tells
+us if a list has precisely two elements – in which case it must return True – or not, in which case it
+must return False. What is the type of onlytwo?
+
+-}
+-- onlytwo :: [a] -> Bool -- parametric polymorphic
+
+myLength :: [a] -> Integer
+myLength [] = 0
+myLength (_ : xs) = 1 + myLength xs
+
+onlytwo :: [a] -> Bool -- parametric polymorphic
+onlytwo xs = myLength xs == 2
+
+{-
+2. The dot product of two pairs of numbers (a, b) and (c, d) is the number a · c + b · d. Define, using
+list comprehension, a function alldots that takes two lists of pairs of numbers and returns all the
+possible dot products of every pair from the first list and every pair from the second list. Find two
+good test case for testing your function definition and use them to test your code. What is the type
+of alldots ?
+-}
+
+-- alldots :: Num a => [(a,a)] -> [(a,a)] -> [(a,a)]
+-- alldots xs ys = [zip [x] [y] | x <- map (\x -> fst x) xs, y <- map (\x -> )  ]
