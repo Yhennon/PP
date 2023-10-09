@@ -31,3 +31,9 @@ For example:
 
 > zip ['a','b','c'] [1,2,3]
 > [('a',1),('b',2),('c',3)]
+
+4. The "fromEnum" function in Haskell.
+With the help of fromEnum, the ordinal value of a character can be found.
+
+> fromEnum 'a'
+> 97
