@@ -112,7 +112,7 @@ foldr functions  - like how sum,product works, or 'f' below.
 
 foldl functions - same as foldr, but to the left instead of right ( fold right, fold left)
 
-(.) - returns the composition of two functions
+(.) - returns the composition of two functions - not a funciton,just operator | the right-hand side function is applied first
 
 all - decides if every element of a list satisfies a given predicate
 
@@ -126,12 +126,22 @@ dropWhile - this function removes elements while a predicate holds of all the el
 -- abba -> [1,2,2,1]
 -- positions
 
-positions xs = [fromEnum x - 96 | x <- xs]
+-- Actually, rewrite this with '(.)' higher-order function (chain the fromEnum and a lambda function?)
+-- positions xs = [fromEnum x - 96 | x <- xs]
 
+-- positions xs = [x - 96 | x <- convert xs]
+--   where
+--     convert = map fromEnum
+
+positions xs = [x - 96 | x <- map fromEnum xs]
+
+-- positions' = map (\c -> fromEnum c - 96)
+
+-- other solution:
 {- Exercise 2
 
 sumsq - takes an integer 'n' as its argument and returns the sum of the squares of the firs n integers. so,
->sumsq 4
+>sumsq 4s
 > 30
 
 > sumsq9
@@ -146,11 +156,13 @@ f [] = 0
 f (x : xs) = x + f xs
 -}
 
-sumsq n = sum [x ^ 2 | x <- [1 .. n]]
+-- sumsq n = sum [x ^ 2 | x <- [1 .. n]]
 
 -- Using foldr.. very quickly, this works, but im not giving 'n' as an input right now. fix that. I AM NOT SURE THE EXERCISE IS GIVEN CORRECTLY, CUZ WITH FOLDER I MUST HAVE 'X:XS' , BUT THE EXERCISE SAYS THE INPUT SHOULD BE A SINGLE 'N'
 sumsq' [] = 0
 sumsq' (x : xs) = x ^ 2 + sumsq' xs
 
--- > sumsq' [1..4]
--- > 30
+-- sumsq'' xs = foldr + 0 x
+--     where x <- xs
+
+sumsq n = foldr (+) 0 [x ^ 2 | x <- [1 .. n]]

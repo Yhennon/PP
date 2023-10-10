@@ -188,7 +188,7 @@ List comprehensions can also use guards to restrict the values produced by earli
 
 Using zip we can define a function that returns the list of all positions of a value in a list:
 positions:: Eq a => a -> [a] -> [Int]
-positions x xs = [i | (x',i) <- zip xs [0..], x == x']
+pos]itions x xs = [i | (x',i) <- zip xs [0..], x == x']
 
 > positions 0 [1,0,0,1,0,1,1,0]
 > [1,2,4,7]
